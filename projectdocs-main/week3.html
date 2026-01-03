@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prototyping Logboek – Week 3</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="min-h-screen flex flex-col bg-gray-50">
+
+  <!-- ===== HEADER ===== -->
+  <header class="bg-white shadow mb-6 relative">
+    <nav class="container mx-auto px-4 py-4 flex items-center gap-4">
+      <button id="menu-btn" class="text-2xl border rounded px-3 py-1 focus:outline-none">☰</button>
+      <h1 class="text-lg font-bold">Prototyping logboek – De Bock Jarno 1GDM1</h1>
+    </nav>
+
+    <!-- Hamburger menu -->
+    <ul id="menu" class="hidden absolute left-4 top-full mt-2 w-64 bg-white border rounded shadow-lg z-50 p-2 flex gap-4 list-none">
+      <li>
+        <a href="index.html" class="nav-link block px-2 py-1 rounded hover:bg-gray-100">Home</a>
+      </li>
+      <div id="weeks-columns" class="flex gap-2"></div>
+    </ul>
+  </header>
+
+  <!-- ===== MAIN CONTENT ===== -->
+  <main class="container mx-auto px-4 flex-1">
+    <!-- Terug naar overzicht button -->
+    <div class="mb-4">
+      <a href="index.html" class="inline-block bg-blue-600 text-white px-4 py-2 rounded shadow hover:bg-blue-700">
+        Terug naar overzicht
+      </a>
+    </div>
+
+    <!-- Week title -->
+    <h2 class="text-2xl font-bold mb-2">Week 3</h2>
+
+    <!-- Verslag text -->
+    <p class="mb-6 text-gray-700 font-medium">Verslag</p>
+
+    <!-- Page-specific content -->
+<div class="inline-block p-4 bg-white rounded shadow">
+  <p class="max-w-prose">
+  Tijdens week 3 ben ik gaan beginnen experimenteren in Figma. Aangezien ik geen voorkennis heb met Figma
+   of gelijkaardige programma's heb ik wat tijd moeten spenderen aan het begrijpen van hoe het programma werkt.
+</p>
+  </div> 
+  <div class="grid md:grid-cols-2 gap-6 items-center mt-10">
+
+  <!-- Foto kolom -->
+  <div class="p-4 bg-white rounded-lg shadow">
+    <img 
+      src="images/low fi figma startscherm.png" 
+      class="rounded-lg"
+      alt=""
+    >
+  </div>
+
+  <!-- Tekst kolom -->
+  <div class="p-4 bg-white rounded-lg shadow">
+    <p class="max-w-prose whitespace-pre-line">
+    Gezien de weinige kennis ben ik voor mijn mid-prototypes gegaan voor een simpel design bestaande uit een achtergrond,verschillende kaders om tekst in te plaatsen, die een andere tint hebben dan de achtergrond. en een rode kleur als 'merkkleur'. Deze komt telkens terug aan de bovenkant van de schermen.
+
+   Tijdens het ontwerpen merkte ik dat de overgang van achtergrond naar kader wel iets duidelijker mocht. Om dit waar te maken heb ik ervoor gekozen om een stroke toe te voegen aan de kaders, om meer onderscheiding te creëren.
+
+   De bestemmingen en tijdstippen laat ik voorlopig nog voor wat het is en kom ik later op terug, voor nu reserveer ik al plaats hiervoor aan de hand van x'jes.
+  
+  </p>
+  </div>
+
+</div>
+ <div class="grid md:grid-cols-2 gap-6 items-center mt-10">
+
+  <!-- Foto kolom -->
+  <div class="p-4 bg-white rounded-lg shadow">
+    <img 
+      src="images/low fi peronscherm.png" 
+      class="rounded-lg"
+      alt=""
+    >
+  </div>
+
+  <!-- Tekst kolom -->
+  <div class="p-4 bg-white rounded-lg shadow">
+    <p class="max-w-prose whitespace-pre-line">
+     Hier heb ik mijn low-fi schetsen van de peronschermen al een beetje proberen te visualiseren. Ook hier is er nog geen informatie te lezen, enkel x'jes op de plek van toekomstige tekst
+   
+   Het zijn 2 schermen die na een paar seconden moeten wisselen om hun informatie te kunnen tonen. het eerste scherm is een verticale weergave van alle volgende treinen in de nabije toekomst, die op dit perron zullen aankomen.
+
+   Het tweede scherm geeft een iets gedetailleerdere weergave weer van de treinsamenstelling en de tussenstops van deze trein.  
+   
+  </p>
+  </div>
+
+</div>
+<body class="min-h-screen bg-gray-50 relative">
+
+  <!-- Background image layer -->
+  <div class="fixed inset-0 -z-10">
+    <div
+      class="absolute inset-0 bg-center bg-cover opacity-5"
+      style="background-image: url('images/achtergrond\ opdracht.png');"
+    ></div>
+  </div>
+<body>
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="bg-white border-t shadow-inner mt-auto">
+    <div class="container mx-auto px-4 py-6 text-center text-gray-600">
+      <p>&copy; 2025 De Bock Jarno. All rights reserved.</p>
+      <p class="mt-2">
+        <a href="https://github.com/YOUR_GITHUB_USERNAME/YOUR_REPO" target="_blank" class="text-blue-600 hover:underline">
+          View my latest project on GitHub
+        </a>
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    const totalWeeks = 12;
+    const currentPage = window.location.pathname.split("/").pop(); // e.g., week2.html
+    const weeksColumns = document.getElementById('weeks-columns');
+    const firstColumnWeeks = [];
+    const secondColumnWeeks = [];
+
+    // Split weeks: 1-6 in first column, 7-12 in second column
+    for (let i = 1; i <= totalWeeks; i++) {
+      if (i <= 6) firstColumnWeeks.push(i);
+      else secondColumnWeeks.push(i);
+    }
+
+    function createWeekColumn(weeksArray) {
+      const ul = document.createElement('ul');
+      ul.classList.add('flex', 'flex-col', 'gap-1');
+
+      weeksArray.forEach(i => {
+        const li = document.createElement('li');
+        const a = document.createElement('a');
+        a.href = `week${i}.html`;
+        a.textContent = `Week ${i}`;
+        a.classList.add('nav-link', 'block', 'px-2', 'py-1', 'rounded', 'hover:bg-gray-100');
+
+        // Highlight current week
+        if (currentPage === `week${i}.html`) a.classList.add('active');
+
+        li.appendChild(a);
+        ul.appendChild(li);
+      });
+
+      return ul;
+    }
+
+    weeksColumns.appendChild(createWeekColumn(firstColumnWeeks));
+    weeksColumns.appendChild(createWeekColumn(secondColumnWeeks));
+
+    // Highlight Home on index.html
+    const homeLink = document.querySelector('a[href="index.html"]');
+    if (currentPage === "index.html" || currentPage === "") homeLink.classList.add('active');
+
+    // Hamburger toggle
+    document.getElementById('menu-btn').addEventListener('click', () => {
+      document.getElementById('menu').classList.toggle('hidden');
+    });
+  </script>
+
+  <style>
+    ul, li { list-style: none; margin: 0; padding: 0; }
+    .nav-link.active {
+      font-weight: bold;
+      color: #1d4ed8;
+      background-color: #dbeafe;
+    }
+    .nav-link:hover {
+      background-color: #f3f4f6;
+    }
+  </style>
+
+</body>
+</html>

@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prototyping Logboek – Week 2</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="min-h-screen flex flex-col bg-gray-50">
+
+  <!-- ===== HEADER ===== -->
+  <header class="bg-white shadow mb-6 relative">
+    <nav class="container mx-auto px-4 py-4 flex items-center gap-4">
+      <button id="menu-btn" class="text-2xl border rounded px-3 py-1 focus:outline-none">☰</button>
+      <h1 class="text-lg font-bold">Prototyping logboek – De Bock Jarno 1GDM1</h1>
+    </nav>
+
+    <!-- Hamburger menu -->
+    <ul id="menu" class="hidden absolute left-4 top-full mt-2 w-64 bg-white border rounded shadow-lg z-50 p-2 flex gap-4 list-none">
+      <li>
+        <a href="index.html" class="nav-link block px-2 py-1 rounded hover:bg-gray-100">Home</a>
+      </li>
+      <div id="weeks-columns" class="flex gap-2"></div>
+    </ul>
+  </header>
+
+  <!-- ===== MAIN CONTENT ===== -->
+  <main class="container mx-auto px-4 flex-1">
+    <!-- Terug naar overzicht button -->
+    <div class="mb-4">
+      <a href="index.html" class="inline-block bg-blue-600 text-white px-4 py-2 rounded shadow hover:bg-blue-700">
+        Terug naar overzicht
+      </a>
+    </div>
+
+    <!-- Week title -->
+    <h2 class="text-2xl font-bold mb-2">Week 2</h2>
+
+    <!-- Verslag text -->
+    <p class="mb-6 text-gray-700 font-medium">Verslag</p>
+
+    <!-- Page-specific content -->
+ <div class="bg-white rounded-lg shadow p-4 max-w-prose mb-10">
+  <p>
+    Tijdens week 2 heb ik schetsen gemaakt voor zowel de perronschermen en de wagonschermen.
+    Verder heb ik ook gebrainstormed wat er op deze schermen moet worden getoond.
+  </p>
+</div>
+
+
+<div class="grid md:grid-cols-2 gap-6 items-center mt-10">
+
+  <!-- Foto kolom -->
+  <div class="p-4 bg-white rounded-lg shadow">
+    <img 
+      src="images/schetsen 1ste week (4).jpg" 
+      class="rounded-lg"
+      alt=""
+    >
+  </div>
+
+  <!-- Tekst kolom -->
+  <div class="p-4 bg-white rounded-lg shadow">
+    <p class="max-w-prose whitespace-pre-line">
+     Tijdens het brainstormen kreeg ik het volgende idee.
+   Voor de peronschermen wou ik graag ook 2 alternerende schermen maken. 
+   Het eerste scherm zal de vertrektijden,vertraging, eindbestemming, tussenstops en het type trein bevatten. 
+   Het tweede scherm zal deze info groter weergeven, voor de 2 eerstvolgende treinen. Hier zal ook een weergave op te zien zijn van waar de eerste en tweede klas zich bevindt,en waar reizigers met een fiets kunnen opstappen. Ook speciale aankondigingen over bijvoorbeeld defecte liften komen hier zichtbaar te staan. 
+  
+  </p>
+  </div>
+
+</div>
+<div class="grid md:grid-cols-2 gap-6 items-center mt-10">
+
+  <!-- Foto kolom -->
+  <div class="p-4 bg-white rounded-lg shadow">
+    <img 
+      src="images/schetsen 2de week wagon.jpg" 
+      class="rounded-lg"
+      alt=""
+    >
+  </div>
+
+  <!-- Tekst kolom -->
+  <div class="p-4 bg-white rounded-lg shadow">
+    <p class="max-w-prose whitespace-pre-line">
+      Voor de wagonschermen had ik het idee om 4 schermen te proberen uitwerken. Na x aantal seconden zullen de schermen telkens verspringen naar het volgende beeld. 
+Wat over alle schermen hetzelfde zal zijn is de weergave van de tijd, het nummer van de trein en de URL naar de website. 
+Het eerste wagonscherm bevat de aankomsttijd aan het eindstation, en een opsomming van de volgende haltes. 
+Scherm 2 geeft weer wat de volgende haltes zullen zijn en om hoe laat de trein daar zal arriveren, daarnaast staat er ook welke speciale voorzieningen dit station heeft, zoals een lift. 
+Scherm 3 geeft een overzicht van de verschillende wagons van de trein, er zal een pijl zijn die laat zien in welk wagon u zich bevindt en verschillende pictogrammen die de aanwezigheid van toiletten aanduiden of weergeven in welke wagon er fietsen mogen worden meegenomen.
+Het laatste scherm bevat enkel een grote QR code die je naar de app/website zal brengen.
+   
+</p>
+  </div>
+
+</div>
+<body class="min-h-screen bg-gray-50 relative">
+
+  <!-- Background image layer -->
+  <div class="fixed inset-0 -z-10">
+    <div
+      class="absolute inset-0 bg-center bg-cover opacity-5"
+      style="background-image: url('images/achtergrond\ opdracht.png');"
+    ></div>
+  </div>
+<body>
+  </main>
+
+</div>
+
+
+   
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="bg-white border-t shadow-inner mt-auto">
+    <div class="container mx-auto px-4 py-6 text-center text-gray-600">
+      <p>&copy; 2025 De Bock Jarno. All rights reserved.</p>
+      <p class="mt-2">
+        <a href="https://github.com/YOUR_GITHUB_USERNAME/YOUR_REPO" target="_blank" class="text-blue-600 hover:underline">
+          View my latest project on GitHub
+        </a>
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    const totalWeeks = 12;
+    const currentPage = window.location.pathname.split("/").pop(); // e.g., week2.html
+    const weeksColumns = document.getElementById('weeks-columns');
+    const firstColumnWeeks = [];
+    const secondColumnWeeks = [];
+
+    // Split weeks: 1-6 in first column, 7-12 in second column
+    for (let i = 1; i <= totalWeeks; i++) {
+      if (i <= 6) firstColumnWeeks.push(i);
+      else secondColumnWeeks.push(i);
+    }
+
+    function createWeekColumn(weeksArray) {
+      const ul = document.createElement('ul');
+      ul.classList.add('flex', 'flex-col', 'gap-1');
+
+      weeksArray.forEach(i => {
+        const li = document.createElement('li');
+        const a = document.createElement('a');
+        a.href = `week${i}.html`;
+        a.textContent = `Week ${i}`;
+        a.classList.add('nav-link', 'block', 'px-2', 'py-1', 'rounded', 'hover:bg-gray-100');
+
+        // Highlight current week
+        if (currentPage === `week${i}.html`) a.classList.add('active');
+
+        li.appendChild(a);
+        ul.appendChild(li);
+      });
+
+      return ul;
+    }
+
+    weeksColumns.appendChild(createWeekColumn(firstColumnWeeks));
+    weeksColumns.appendChild(createWeekColumn(secondColumnWeeks));
+
+    // Highlight Home on index.html
+    const homeLink = document.querySelector('a[href="index.html"]');
+    if (currentPage === "index.html" || currentPage === "") homeLink.classList.add('active');
+
+    // Hamburger toggle
+    document.getElementById('menu-btn').addEventListener('click', () => {
+      document.getElementById('menu').classList.toggle('hidden');
+    });
+  </script>
+
+  <style>
+    ul, li { list-style: none; margin: 0; padding: 0; }
+    .nav-link.active {
+      font-weight: bold;
+      color: #1d4ed8;
+      background-color: #dbeafe;
+    }
+    .nav-link:hover {
+      background-color: #f3f4f6;
+    }
+  </style>
+
+</body>
+</html>

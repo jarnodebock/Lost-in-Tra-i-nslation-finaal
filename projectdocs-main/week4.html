@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prototyping Logboek – Week 4</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="min-h-screen flex flex-col bg-gray-50">
+
+  <!-- ===== HEADER ===== -->
+  <header class="bg-white shadow mb-6 relative">
+    <nav class="container mx-auto px-4 py-4 flex items-center gap-4">
+      <button id="menu-btn" class="text-2xl border rounded px-3 py-1 focus:outline-none">☰</button>
+      <h1 class="text-lg font-bold">Prototyping logboek – De Bock Jarno 1GDM1</h1>
+    </nav>
+
+    <!-- Hamburger menu -->
+    <ul id="menu" class="hidden absolute left-4 top-full mt-2 w-64 bg-white border rounded shadow-lg z-50 p-2 flex gap-4 list-none">
+      <li>
+        <a href="index.html" class="nav-link block px-2 py-1 rounded hover:bg-gray-100">Home</a>
+      </li>
+      <div id="weeks-columns" class="flex gap-2"></div>
+    </ul>
+  </header>
+
+  <!-- ===== MAIN CONTENT ===== -->
+  <main class="container mx-auto px-4 flex-1">
+    <!-- Terug naar overzicht button -->
+    <div class="mb-4">
+      <a href="index.html" class="inline-block bg-blue-600 text-white px-4 py-2 rounded shadow hover:bg-blue-700">
+        Terug naar overzicht
+      </a>
+    </div>
+
+    <!-- Week title -->
+    <h2 class="text-2xl font-bold mb-2">Week 4</h2>
+
+    <!-- Verslag text -->
+    <p class="mb-6 text-gray-700 font-medium">Verslag</p>
+
+    <!-- Page-specific content -->
+<div class="inline-block p-4 bg-white rounded shadow">
+  <p class="max-w-prose">
+Week 4 stond in het teken van nu ook een eerste prototype voor de wagonschermen in figma te maken. Hiervoor bleef ik me hard baseren op de designs van de andere schermen, qua kleur en indeling.
+</p>
+  </div>
+
+  <div class="grid md:grid-cols-2 gap-6 items-center mt-10">
+
+  <!-- Foto kolom -->
+  <div class="p-4 bg-white rounded-lg shadow">
+    <img 
+      src="images/low fi wagonschermen.png" 
+      class="rounded-lg"
+      alt=""
+    >
+  </div>
+
+  <!-- Tekst kolom -->
+  <div class="p-4 bg-white rounded-lg shadow">
+    <p class="max-w-prose whitespace-pre-line">
+       Wat hier te zien is zijn 4 schermen die elkaar na een bepaald interval moeten afwisselen op de wagonschermen.
+
+   Het 1ste scherm bevat een algemeen overzicht met het aankomstuur op de eindbestemming en een opsomming van de volgende haltes, in volgorde.
+
+   Scherm 2 geeft gedetailleerde info over het uur van aankomst bij de volgende stations op de route. Op dit scherm wordt er ook info gegeven over bijvoorbeeld eventuele voorzieningen zoals een lift in de bijhorende stations.
+
+   Scherm 3 heeft betrekking op de trein waar de reiziger zich bevindt. Op dit scherm kunnen ze zien in welke wagon ze zich bevinden op de trein. Later wil ik hier nog pictogrammen aan toevoegen om alles duidelijker en universeler te maken.
+
+   Het 4de en laatste scherm zou enkel een QR code tonen, die je zal doorsturen naar de app van de organisatie, waar je trajecten kan bekijken, tickets kopen, stations bekijken etc.
+  
+  </p>
+  </div>
+
+</div>
+<body class="min-h-screen bg-gray-50 relative">
+
+  <!-- Background image layer -->
+  <div class="fixed inset-0 -z-10">
+    <div
+      class="absolute inset-0 bg-center bg-cover opacity-5"
+      style="background-image: url('images/achtergrond\ opdracht.png');"
+    ></div>
+  </div>
+<body>  
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="bg-white border-t shadow-inner mt-auto">
+    <div class="container mx-auto px-4 py-6 text-center text-gray-600">
+      <p>&copy; 2025 De Bock Jarno. All rights reserved.</p>
+      <p class="mt-2">
+        <a href="https://github.com/YOUR_GITHUB_USERNAME/YOUR_REPO" target="_blank" class="text-blue-600 hover:underline">
+          View my latest project on GitHub
+        </a>
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    const totalWeeks = 12;
+    const currentPage = window.location.pathname.split("/").pop(); // e.g., week2.html
+    const weeksColumns = document.getElementById('weeks-columns');
+    const firstColumnWeeks = [];
+    const secondColumnWeeks = [];
+
+    // Split weeks: 1-6 in first column, 7-12 in second column
+    for (let i = 1; i <= totalWeeks; i++) {
+      if (i <= 6) firstColumnWeeks.push(i);
+      else secondColumnWeeks.push(i);
+    }
+
+    function createWeekColumn(weeksArray) {
+      const ul = document.createElement('ul');
+      ul.classList.add('flex', 'flex-col', 'gap-1');
+
+      weeksArray.forEach(i => {
+        const li = document.createElement('li');
+        const a = document.createElement('a');
+        a.href = `week${i}.html`;
+        a.textContent = `Week ${i}`;
+        a.classList.add('nav-link', 'block', 'px-2', 'py-1', 'rounded', 'hover:bg-gray-100');
+
+        // Highlight current week
+        if (currentPage === `week${i}.html`) a.classList.add('active');
+
+        li.appendChild(a);
+        ul.appendChild(li);
+      });
+
+      return ul;
+    }
+
+    weeksColumns.appendChild(createWeekColumn(firstColumnWeeks));
+    weeksColumns.appendChild(createWeekColumn(secondColumnWeeks));
+
+    // Highlight Home on index.html
+    const homeLink = document.querySelector('a[href="index.html"]');
+    if (currentPage === "index.html" || currentPage === "") homeLink.classList.add('active');
+
+    // Hamburger toggle
+    document.getElementById('menu-btn').addEventListener('click', () => {
+      document.getElementById('menu').classList.toggle('hidden');
+    });
+  </script>
+
+  <style>
+    ul, li { list-style: none; margin: 0; padding: 0; }
+    .nav-link.active {
+      font-weight: bold;
+      color: #1d4ed8;
+      background-color: #dbeafe;
+    }
+    .nav-link:hover {
+      background-color: #f3f4f6;
+    }
+  </style>
+
+</body>
+</html>

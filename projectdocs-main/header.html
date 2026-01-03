@@ -1,0 +1,87 @@
+<header class="bg-white shadow mb-6 relative">
+    <nav class="container mx-auto px-4 py-4 flex items-center gap-4">
+        <!-- Hamburger Button -->
+        <button id="menu-btn" class="text-2xl border rounded px-3 py-1 focus:outline-none">
+            ☰
+        </button>
+
+        <!-- Title -->
+        <h1 class="text-lg font-bold">
+            Prototyping logboek – De Bock Jarno
+        </h1>
+    </nav>
+
+    <!-- Hamburger menu -->
+    <ul id="menu" class="hidden absolute left-4 top-full mt-2 w-64 bg-white border rounded shadow-lg z-50 p-2 flex gap-4 list-none">
+        <!-- Column 1: Home -->
+        <li>
+            <a href="index.html" class="nav-link block px-2 py-1 rounded hover:bg-gray-100">Home</a>
+        </li>
+
+        <!-- Column 2: Weeks container -->
+        <div id="weeks-columns" class="flex gap-2">
+            <!-- JS will generate two columns here -->
+        </div>
+    </ul>
+</header>
+
+<script>
+    const totalWeeks = 11;
+    const currentPage = window.location.pathname.split("/").pop();
+    const weeksColumns = document.getElementById('weeks-columns');
+
+    const firstColumnWeeks = [];
+    const secondColumnWeeks = [];
+
+    // Split weeks: 1-6 in first column, 7-11 in second column
+    for (let i = 1; i <= totalWeeks; i++) {
+        if (i <= 6) firstColumnWeeks.push(i);
+        else secondColumnWeeks.push(i);
+    }
+
+    function createWeekColumn(weeksArray) {
+        const ul = document.createElement('ul');
+        ul.classList.add('flex', 'flex-col', 'gap-1'); // vertical column
+
+        weeksArray.forEach(i => {
+            const li = document.createElement('li');
+            const a = document.createElement('a');
+            a.href = `week${i}.html`;
+            a.textContent = `Week ${i}`;
+            a.classList.add('nav-link', 'block', 'px-2', 'py-1', 'rounded', 'hover:bg-gray-100');
+            if (currentPage === `week${i}.html`) a.classList.add('active');
+            li.appendChild(a);
+            ul.appendChild(li);
+        });
+
+        return ul;
+    }
+
+    // Append both columns
+    weeksColumns.appendChild(createWeekColumn(firstColumnWeeks));
+    weeksColumns.appendChild(createWeekColumn(secondColumnWeeks));
+
+    // Highlight Home if on index.html
+    const homeLink = document.querySelector('a[href="index.html"]');
+    if (currentPage === "index.html" || currentPage === "") {
+        homeLink.classList.add('active');
+    }
+
+    // Hamburger toggle
+    const menuBtn = document.getElementById('menu-btn');
+    menuBtn.addEventListener('click', () => {
+        document.getElementById('menu').classList.toggle('hidden');
+    });
+</script>
+
+<style>
+    ul, li { list-style: none; margin: 0; padding: 0; }
+    .nav-link.active {
+        font-weight: bold;
+        color: #1d4ed8;
+        background-color: #dbeafe;
+    }
+    .nav-link:hover {
+        background-color: #f3f4f6;
+    }
+</style>

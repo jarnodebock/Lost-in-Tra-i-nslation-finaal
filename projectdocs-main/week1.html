@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prototyping Logboek – Week 2</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="min-h-screen flex flex-col bg-gray-50">
+
+  <!-- ===== HEADER ===== -->
+  <header class="bg-white shadow mb-6 relative">
+    <nav class="container mx-auto px-4 py-4 flex items-center gap-4">
+      <button id="menu-btn" class="text-2xl border rounded px-3 py-1 focus:outline-none">☰</button>
+      <h1 class="text-lg font-bold">Prototyping logboek – De Bock Jarno 1GDM1</h1>
+    </nav>
+
+    <!-- Hamburger menu -->
+    <ul id="menu" class="hidden absolute left-4 top-full mt-2 w-64 bg-white border rounded shadow-lg z-50 p-2 flex gap-4 list-none">
+      <li>
+        <a href="index.html" class="nav-link block px-2 py-1 rounded hover:bg-gray-100">Home</a>
+      </li>
+      <div id="weeks-columns" class="flex gap-2"></div>
+    </ul>
+  </header>
+
+  <!-- ===== MAIN CONTENT ===== -->
+  <main class="container mx-auto px-4 flex-1">
+    <!-- Terug naar overzicht button -->
+    <div class="mb-4">
+      <a href="index.html" class="inline-block bg-blue-600 text-white px-4 py-2 rounded shadow hover:bg-blue-700">
+        Terug naar overzicht
+      </a>
+    </div>
+
+    <!-- Week title -->
+    <h2 class="text-2xl font-bold mb-2">Week 1</h2>
+
+    <!-- Verslag text -->
+    <p class="mb-6 text-gray-700 font-medium">Verslag</p>
+
+    <!-- Page-specific content -->
+    <div class="p-4 bg-white rounded-lg shadow max-w-prose mb-10">
+  <p>
+    Op een A4 blad ben ik beginnen experimenteren en gaan kijken wat 
+    er essentieel is om op een trein scherm te tonen, de resultaten hiervan
+    kunt u hier onder vinden.
+  </p>
+</div>
+
+ <div class="grid md:grid-cols-2 gap-6 mt-10 items-center">
+
+  <!-- Foto kolom -->
+  <div class="p-4 bg-white rounded-lg shadow inline-block">
+    <img 
+      src="images/schetsen 1ste week (3).jpg" 
+      class="rounded-lg"
+      alt=""
+    >
+  </div>
+
+  <!-- Tekst kolom -->
+  <div class="p-4 bg-white rounded-lg shadow inline-block">
+    <p class="max-w-prose whitespace-pre-line">
+Voor het overzichtsscherm heb ik 5 varianten ontwikkeld.
+  3 aparte schermen ,en 1keer, 2 schermen die elkaar na een kort interval afwisselen.
+   Wat ik eventueel op het scherm wil tonen zijn : Huidige tijd, kolom met aankomsttijden + vertragingen kolom met bestemmingen, kolom met het type trein (IC,S,L), kolom met perronnummer, aantal wagons per trein stations gebonden aankondigingen, QR code naar de app, URL van de website.            
+   Het concept met de 2 alternerende infoschermen: Het eerste scherm zou een snel overzicht bieden van x aantal aankomende treinen
+   In dit overzicht worden de tijd van aankomst en vertraging weergegeven, het type trein en de eindbestemming en het spoor waarop deze aankomen.
+   Na 5 tot 10 seconden verandert het scherm naar een gedetailleerdere weergave van een kleiner aantal treinen.
+   Bij de gedetailleerde weergave komen er ook tussenstops tevoorschijn en eventuele aankondigingen.
+  
+   </p>
+  </div>
+
+</div>
+           
+<div class="grid md:grid-cols-2 gap-6 mt-10 items-center">
+
+  <!-- Foto kolom -->
+  <div class="p-4 bg-white rounded-lg shadow inline-block">
+    <img 
+      src="images/schetsen 1ste week (2).jpg" 
+      class="rounded-lg"
+      alt=""
+    >
+  </div>
+
+  <!-- Tekst kolom -->
+  <div class="p-4 bg-white rounded-lg shadow inline-block">
+    <p class="max-w-prose whitespace-pre-line">
+deze foto toont nog wat extra schetsen bij de vorige ideëen
+  
+</p>
+  </div>
+
+</div>
+<body class="min-h-screen bg-gray-50 relative">
+
+  <!-- Background image layer -->
+  <div class="fixed inset-0 -z-10">
+    <div
+      class="absolute inset-0 bg-center bg-cover opacity-5"
+      style="background-image: url('images/achtergrond\ opdracht.png');"
+    ></div>
+  </div>
+<body>
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="bg-white border-t shadow-inner mt-auto">
+    <div class="container mx-auto px-4 py-6 text-center text-gray-600">
+      <p>&copy; 2025 De Bock Jarno. All rights reserved.</p>
+      <p class="mt-2">
+        <a href="https://github.com/YOUR_GITHUB_USERNAME/YOUR_REPO" target="_blank" class="text-blue-600 hover:underline">
+          View my latest project on GitHub
+        </a>
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    const totalWeeks = 12;
+    const currentPage = window.location.pathname.split("/").pop(); // e.g., week2.html
+    const weeksColumns = document.getElementById('weeks-columns');
+    const firstColumnWeeks = [];
+    const secondColumnWeeks = [];
+
+    // Split weeks: 1-6 in first column, 7-12 in second column
+    for (let i = 1; i <= totalWeeks; i++) {
+      if (i <= 6) firstColumnWeeks.push(i);
+      else secondColumnWeeks.push(i);
+    }
+
+    function createWeekColumn(weeksArray) {
+      const ul = document.createElement('ul');
+      ul.classList.add('flex', 'flex-col', 'gap-1');
+
+      weeksArray.forEach(i => {
+        const li = document.createElement('li');
+        const a = document.createElement('a');
+        a.href = `week${i}.html`;
+        a.textContent = `Week ${i}`;
+        a.classList.add('nav-link', 'block', 'px-2', 'py-1', 'rounded', 'hover:bg-gray-100');
+
+        // Highlight current week
+        if (currentPage === `week${i}.html`) a.classList.add('active');
+
+        li.appendChild(a);
+        ul.appendChild(li);
+      });
+
+      return ul;
+    }
+
+    weeksColumns.appendChild(createWeekColumn(firstColumnWeeks));
+    weeksColumns.appendChild(createWeekColumn(secondColumnWeeks));
+
+    // Highlight Home on index.html
+    const homeLink = document.querySelector('a[href="index.html"]');
+    if (currentPage === "index.html" || currentPage === "") homeLink.classList.add('active');
+
+    // Hamburger toggle
+    document.getElementById('menu-btn').addEventListener('click', () => {
+      document.getElementById('menu').classList.toggle('hidden');
+    });
+  </script>
+
+  <style>
+    ul, li { list-style: none; margin: 0; padding: 0; }
+    .nav-link.active {
+      font-weight: bold;
+      color: #1d4ed8;
+      background-color: #dbeafe;
+    }
+    .nav-link:hover {
+      background-color: #f3f4f6;
+    }
+  </style>
+
+</body>
+</html>
